@@ -8,7 +8,7 @@
       <th>Brewery</th>
       <th></th>
       <th></th>
-      <th></th>
+      <th>Avg score</th>
     </tr>
   </thead>
 
@@ -20,6 +20,11 @@
         <td><%= link_to beer.brewery.name, beer.brewery %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% if beer.ratings.empty? %>
+            beer has not yet been rated!
+        <% else %>
+           <%= beer.average_rating%>
+        <% end %></td>
       </tr>
     <% end %>
   </tbody>
