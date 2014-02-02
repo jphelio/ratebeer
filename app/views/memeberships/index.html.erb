@@ -1,0 +1,29 @@
+<h1>Listing memeberships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Beer club</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @memeberships.each do |memebership| %>
+      <tr>
+        <td><%= memebership.user_id %></td>
+        <td><%= memebership.beer_club_id %></td>
+        <td><%= link_to 'Show', memebership %></td>
+        <td><%= link_to 'Edit', edit_memebership_path(memebership) %></td>
+        <td><%= link_to 'Destroy', memebership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Memebership', new_memebership_path %>
