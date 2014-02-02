@@ -10,6 +10,15 @@
   <%= @beer_club.founded %>
 </p>
 
+<ul>
+  <% @beer_club.memeberships.each do |member| %>
+      <li>
+        <%= link_to member.user.username, user_path(member.user) %>
+      </li>
+  <% end %>
+</ul>
+
+
 <p>
   <strong>City:</strong>
   <%= @beer_club.city %>
