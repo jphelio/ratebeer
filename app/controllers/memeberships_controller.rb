@@ -16,7 +16,7 @@ class MemebershipsController < ApplicationController
   def new
     @memebership = Memebership.new
     @memeberships = Memebership.all
-    @beerClubs = BeerClub.all
+    @beerClubs = BeerClub.all.reject{ |b| b.members.include? current_user }
   end
 
   # GET /memeberships/1/edit
@@ -28,6 +28,7 @@ class MemebershipsController < ApplicationController
   def create
     @beerClubs = BeerClub.all
     @memebership = Memebership.new(memebership_params)
+    @memebership.user = current_user
 
     respond_to do |format|
       if @memebership.save

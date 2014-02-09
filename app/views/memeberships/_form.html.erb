@@ -12,7 +12,6 @@
   <% end %>
 
     <%= f.select :beer_club_id, options_from_collection_for_select(@beerClubs, :id, :to_s) %>
-    <%= hidden_field_tag(:user_id, current_user) %>
     <%= f.submit%>
 
 <% end %>
