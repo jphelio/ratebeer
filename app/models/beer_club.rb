@@ -1,9 +1,8 @@
 class BeerClub < ActiveRecord::Base
-  has_many :memeberships
-  has_many :members, through: :memeberships, source: :user
+  has_many :memberships
+  has_many :members, through: :memberships, source: :user
 
-  def to_s
-    return self.name
+  def member?(user)
+    members.include? user
   end
-
 end

@@ -1,17 +1,15 @@
-
 class Beer < ActiveRecord::Base
-  include Average
+  include RatingAverage
 
-  validates :name, uniqueness: true, length: { minimum: 1 }
-  validates :style, length: { minimum: 1 }
+  validates :name, presence: true
+  validates :style, presence: true
 
-  belongs_to :brewery
+  belongs_to :style
+	belongs_to :brewery
   has_many :ratings, dependent: :destroy
   has_many :raters, -> { uniq }, through: :ratings, source: :user
 
   def to_s
-    return "#{self.name}, #{self.brewery.name}"
+    "#{name} #{brewery.name}"
   end
 end
-
-
